@@ -1,0 +1,6 @@
+# Piped out via puppet, do not modify manually
+[push]
+	default = simple
+[user]
+	name = Root Test 
+	email = root@test.door43.org

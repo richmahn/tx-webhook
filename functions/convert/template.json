@@ -1,0 +1,31 @@
+{
+	"templates": [{
+		"doctype": "usfm",
+		"transforms": [{
+			"to": "html",
+			"tool": "usfm/convert_to_html.py"
+		}]
+	}, {
+		"doctype": "obs",
+		"transforms": [{
+			"to": "html",
+			"tool": "obs/convert_to_html.py"
+		}]
+	}, {
+		"doctype": "tA",
+		"transforms": [{
+			"to": "html",
+			"tool": "ta/convert_to_html.py"
+		}]
+	}, {
+		"doctype": "ulb",
+		"tests": [{
+			"tool": "extensionCheck('.ulb')",
+			"tool": "verses()"
+		}],
+		"transforms": [{
+			"to": "html",
+			"tool": "obs/convert_to_html.py"
+		}]
+	}]
+}

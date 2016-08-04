@@ -1,0 +1,12 @@
+#!/bin/sh
+
+USAGE="Usage: s3del folder"
+
+if [ $# -lt 1 ] ; then
+  echo "Missing folder name."
+  echo "Usage: $USAGE"
+  exit 1
+fi
+
+s3cmd sync --recursive --delete-removed --force -c .s3-convert.cfg blank/ s3://door43.org/u/$1
+

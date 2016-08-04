@@ -1,0 +1,3 @@
+#!/bin/sh
+
+s3cmd ls -c .s3-convert.cfg s3://door43.org/u/$1
