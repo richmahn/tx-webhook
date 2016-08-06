@@ -1,3 +1,4 @@
 #!/bin/sh
 
-s3cmd ls -c .s3-convert.cfg s3://door43.org/u/$1
+#s3cmd ls -c .s3-convert.cfg s3://door43.org/u/$1
+s3cmd ls -c /root/.aws/config s3://test-cdn.door43.org/u/$1

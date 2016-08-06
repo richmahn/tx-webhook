@@ -32,8 +32,8 @@ def myLog( level, msg):
         print ( "  " * l ) + level + " " + msg
 
 MAXJSON  = 10000
-AWS_KEY = "***REMOVED***"
-AWS_SECRET = "***REMOVED***"
+#AWS_KEY = os.environ( 'AWS_KEY' )
+#AWS_SECRET = os.environ( 'AWS_SECRET' )
 AWS_REGION = "us-east-1"
 
 # define file paths
@@ -232,11 +232,12 @@ try: # Upload to s3
     src = dest # like "bspidel/gaj-x-ymnk_obs_text_obs/d2bc0dcb/html"
     outPath = bucket + dest
 
-    session = Session( 
-        aws_access_key_id=AWS_KEY, aws_secret_access_key=AWS_SECRET, 
-        region_name=AWS_REGION 
-    )
+    #session = Session( 
+    #    aws_access_key_id=AWS_KEY, aws_secret_access_key=AWS_SECRET, 
+    #    region_name=AWS_REGION 
+    #)
 
+    session = boto3.session.Session()
     s3 = session.client( 's3' )
     tpl = 1
 
