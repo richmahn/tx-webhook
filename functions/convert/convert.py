@@ -20,6 +20,7 @@ debugLevel = 3
 def myLog( level, msg):
     # micro debug
     sw = {
+      "detail"  : 5,
       "debug"   : 4,
       "info"    : 3,
       "warning" : 2,
@@ -41,7 +42,7 @@ baseDir  = '/tmp/'
 appDir   = baseDir
 workDir  = appDir 
 outDir   = appDir  + 'output/'
-bucket   = 'door43.org' # pusher repo hash fmt
+bucket   = 'test-cdn.door43.org' # pusher repo hash fmt
 config   = './.s3-convert.cfg'
 
 try: # template of things to do based on repo
@@ -49,10 +50,10 @@ try: # template of things to do based on repo
    tmpRaw = tmp.read( MAXJSON )
    tmp.close()
    templates = json.loads( tmpRaw )
-   myLog( "info", "templates: " + tmpRaw )
+   myLog( "debug", "templates: " + tmpRaw )
 except:
    myLog( "error", "Cannot read transform template" )
-   sys.exit( 2 )
+   sys.tsessionttt( 2 )
 
 # decode received message
 sp = " "
@@ -129,7 +130,7 @@ if debugLevel > 3:
 
         for nme in files:
             srcPath =  join( root, nme )
-            myLog( "info", srcPath  )
+            myLog( "detail", srcPath  )
             #i -= 1
 
             #if i < 1:
@@ -176,10 +177,10 @@ try: # Find doctype in template then process per template
     myLog( "info", "looking for docType: " + docType )
 
     for item in templates[ 'templates']:
-        myLog( "info", "trying: " + item['doctype'] )
+        myLog( "debug", "trying: " + item['doctype'] )
 
         if item['doctype'] == docType:
-            myLog( "info", "found: " + item['doctype'] )
+            myLog( "detail", "found: " + item['doctype'] )
 
             try: # Apply qualifying tests
                 for test in item[ 'tests' ]:
@@ -227,6 +228,11 @@ except:
     sys.exit( 5 )
 
 try: # Upload to s3
+    #session = boto3.session.Session()
+    s3 = boto3.client( 's3' )
+    #myLog( "debug", session )
+    #print boto3.client.list_roles()
+
     myLog( "info", "About to ls" )
     os.chdir( outDir )
     src = dest # like "bspidel/gaj-x-ymnk_obs_text_obs/d2bc0dcb/html"
@@ -237,8 +243,6 @@ try: # Upload to s3
     #    region_name=AWS_REGION 
     #)
 
-    session = boto3.session.Session()
-    s3 = session.client( 's3' )
     tpl = 1
 
     for root, dirs, files in os.walk( src ):
@@ -247,7 +251,7 @@ try: # Upload to s3
 
         for nme in files:
             srcPath =  join( root, nme )
-            myLog( "debug", "first srcPath: " + srcPath )  
+            myLog( "debug", "srcPath: " + srcPath +  "  Bucket: " + bucket )  
             s3.upload_file( srcPath, bucket, "u/" + srcPath )
             myLog( "info", "From: " + srcPath + " to: s3://" + bucket + "/u/"  + srcPath )
             c += 1
