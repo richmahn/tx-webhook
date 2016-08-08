@@ -31,7 +31,7 @@ eventlog==0.8.0
 #Flask==0.10.1
 freeze==1.0.10
 futures==3.0.5
-gyp==0.1
+#gyp==0.1
 iniparse==0.4
 iotop==0.6
 ipaddress==1.0.6
