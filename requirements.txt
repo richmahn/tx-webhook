@@ -53,7 +53,7 @@ mutagen==1.31
 pathspec==0.3.4
 perf==0.1
 pinax-theme-bootstrap==5.5.1
-policycoreutils-default-encoding==0.1
+#policycoreutils-default-encoding==0.1
 pyasn1==0.1.7
 pycurl==7.19.0
 PyGithub==1.25.2
