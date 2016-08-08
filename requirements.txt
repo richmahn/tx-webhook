@@ -27,8 +27,8 @@ docutils==0.12
 ecdsa==0.13
 etherpad-lite==0.2.1
 eventlog==0.8.0
-fail2ban==0.9.3
-Flask==0.10.1
+#fail2ban==0.9.3
+#Flask==0.10.1
 freeze==1.0.10
 futures==3.0.5
 gyp==0.1
