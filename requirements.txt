@@ -57,7 +57,7 @@ pinax-theme-bootstrap==5.5.1
 pyasn1==0.1.7
 pycurl==7.19.0
 PyGithub==1.25.2
-pygobject==3.14.0
+#pygobject==3.14.0
 pygpgme==0.3
 PyGreSQL==4.2
 pyliblzma==0.5.3
