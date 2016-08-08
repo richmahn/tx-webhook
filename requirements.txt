@@ -33,7 +33,7 @@ freeze==1.0.10
 futures==3.0.5
 #gyp==0.1
 iniparse==0.4
-iotop==0.6
+#iotop==0.6
 ipaddress==1.0.6
 IPy==0.75
 itsdangerous==0.23
