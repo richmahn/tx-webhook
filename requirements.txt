@@ -80,7 +80,7 @@ semantic-version==2.5.0
 #sepolicy==1.1
 six==1.9.0
 #slip==0.4.0
-slip.dbus==0.4.0
+#slip.dbus==0.4.0
 texttable==0.8.4
 Twisted-Core==12.2.0
 Unidecode==0.4.19
