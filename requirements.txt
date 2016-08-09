@@ -74,7 +74,7 @@ python-dateutil==2.2
 PyYAML==3.11
 #requests==2.7.0
 #rsa==3.1.2
-s3cmd==1.6.1
+#s3cmd==1.6.1
 #semantic-version==2.5.0
 #seobject==0.1
 #sepolicy==1.1
