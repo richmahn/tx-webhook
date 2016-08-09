@@ -84,7 +84,7 @@ six==1.9.0
 texttable==0.8.4
 #Twisted-Core==12.2.0
 Unidecode==0.4.19
-urlgrabber==3.10
+#urlgrabber==3.10
 urllib3==1.10.2
 virtualenv==15.0.2
 wcwidth==0.1.7
