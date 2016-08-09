@@ -90,6 +90,6 @@ virtualenv==15.0.2
 wcwidth==0.1.7
 websocket-client==0.37.0
 Werkzeug==0.9.1
-yum-langpacks==0.4.2
+#yum-langpacks==0.4.2
 yum-metadata-parser==1.1.4
 zope.interface==4.0.5
