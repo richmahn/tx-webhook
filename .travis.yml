@@ -15,7 +15,7 @@ install:
 
 # command to run tests
 script:
-  ( cd functions/convert ; python convert.py < test/obs.json )
+  test.sh
 #script: coverage run test-setup.py test
 #after_success: coverals
 
