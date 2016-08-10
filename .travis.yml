@@ -15,7 +15,7 @@ install:
 
 # command to run tests
 script:
-  test.sh
+  sh test.sh
 #script: coverage run test-setup.py test
 #after_success: coverals
 
