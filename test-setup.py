@@ -18,7 +18,8 @@ setup(
     install_requires=[
         'markdown',
         'requests',
-        'uw_tools'
     ],
     test_suite='tests'
 )
+#        'uw_tools'
+
