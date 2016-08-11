@@ -111,7 +111,7 @@ if True:
     #crl.close()
     myLog( "info", "curl " + url + " -o " + zipFile )
     res = subprocess.check_output( 
-        [ "./curl", url, "-o", zipFile ], 
+        [ "curl", url, "-o", zipFile ], 
         shell=False )
 
     try:
