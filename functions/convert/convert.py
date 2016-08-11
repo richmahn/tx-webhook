@@ -8,7 +8,7 @@ import logging
 import time
 import subprocess
 import boto3
-import pycurl
+#import pycurl
 
 from boto3.session    import Session
 from os.path          import join, getsize
