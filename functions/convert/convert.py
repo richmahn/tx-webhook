@@ -109,7 +109,7 @@ if True:
     #crl.setopt( crl.WRITEDATA, zipFile )
     #crl.perform()
     #crl.close()
-    myLog( "info", "./curl " + url + " -o " + zipFile )
+    myLog( "info", "curl " + url + " -o " + zipFile )
     res = subprocess.check_output( 
         [ "./curl", url, "-o", zipFile ], 
         shell=False )
