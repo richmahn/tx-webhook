@@ -114,7 +114,8 @@ if True:
         [ "curl", url, "-o", zipFile ], 
         shell=False )
 
-    try:
+    #try:
+    if True:
         if not os.path.exists( zipDir ):
             os.makedirs( zipDir )
  
@@ -126,10 +127,10 @@ if True:
             myLog( "error", "cannot tar: " + zipFile +  " Error: " + e.strerror )
             print( "506" )
             sys.exit( 6 )
-    except OSError, e:
-        myLog( "error", "Cannot make working directory: " + zipDir + " Error: " + e.strerror )
-        print( "507" )
-        sys.exit( 7 )
+    #except OSError, e:
+    #    myLog( "error", "Cannot make working directory: " + zipDir + " Error: " + e.strerror )
+    #    print( "507" )
+    #    sys.exit( 7 )
 #except OSError, e:
 #    myLog( "error", "Cannot: curl " + url + " -o " + zipFile + " Error: " + e.strerror )
 #    print( "508" )
