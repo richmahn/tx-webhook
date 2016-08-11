@@ -1,5 +1,15 @@
 #!/usr/bin/env python
-
+#####################################################################
+#
+# extract repo infor from post message
+# curl file to tmp directory
+# unzip file with tar
+# determine operation to perform
+# call correct builder
+# call correct formatter
+# send to s3
+#
+#####################################################################
 # get required code
 import os
 import sys
@@ -31,7 +41,7 @@ def myLog( level, msg):
     l = sw.get( level, 5 )
 
     if l <= debugLevel:
-        print ( "  " * l ) + level + " " + msg
+        print( ( "  " * l ) + level + " " + msg )
 
 MAXJSON  = 10000
 #AWS_KEY = os.environ( 'AWS_KEY' )
@@ -70,7 +80,7 @@ url = commitUrl.replace( "commit", "archive" )
 # verify that url is from git.door43.org
 if url.find( "git.door43.org" ) < 0:
     myLog( "warning", "Notification is not from Gogs. Ignoring." )
-    print "400"
+    print( "400" )
     sys.exit( 0 )
 
 myLog( "info", "url: " + url )
@@ -114,15 +124,15 @@ if True:
                  shell=False )
         except OSError, e:
             myLog( "error", "cannot tar: " + zipFile +  " Error: " + e.strerror )
-            print "506"
+            print( "506" )
             sys.exit( 6 )
     except OSError, e:
         myLog( "error", "Cannot make working directory: " + zipDir + " Error: " + e.strerror )
-        print "507"
+        print( "507" )
         sys.exit( 7 )
 #except OSError, e:
 #    myLog( "error", "Cannot: curl " + url + " -o " + zipFile + " Error: " + e.strerror )
-#    print "508"
+#    print( "508" )
     sys.exit( 8 )
 
 # check for manifest
@@ -165,7 +175,7 @@ try: # look at repo manifest could be in subdirectory
         manifest = json.loads( raw )
     else:
         myLog( "error", "No manifest for this repo." )
-        print "502"
+        print( "502" )
         sys.exit( 2 )
 
     # Identify doc type
@@ -177,7 +187,7 @@ try: # look at repo manifest could be in subdirectory
 
 except OSError, e:
     myLog( "error", "Cannot parse manifest. Error: " + e.strerror )
-    print "503"
+    print( "503" )
     sys.exit( 3 )
 
 try: # Find doctype in template then process per template
@@ -227,19 +237,19 @@ try: # Find doctype in template then process per template
 
     if isFound == False:
         myLog( "error", "Cannot find docType: " + docIdx )
-        print "504"
+        print( "504" )
         sys.exit( 4 )
 
 except:
     myLog( "error", "No support for docType: " + docType )
-    print "505"
+    print( "505" )
     sys.exit( 5 )
 
 try: # Upload to s3
     #session = boto3.session.Session()
     s3 = boto3.client( 's3' )
     #myLog( "debug", session )
-    #print boto3.client.list_roles()
+    #print( boto3.client.list_roles() )
 
     myLog( "info", "About to ls" )
     os.chdir( outDir )
@@ -269,9 +279,9 @@ try: # Upload to s3
 
 except OSError, e:
     myLog( "warning", "Cannot upload to s3. Error: " + e.strerror  )
-    print "506"
+    print( "506" )
 
-print '200'
+print( '200' )
 
 if __name__ == "__main__":
     try:
