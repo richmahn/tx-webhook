@@ -116,7 +116,7 @@ if True:
 
     try:
         if not os.path.exists( zipDir ):
-            os.makedirs( zipDir, 0777 )
+            os.makedirs( zipDir )
  
         try:
              res = subprocess.check_output( 
