@@ -120,7 +120,7 @@ if True:
  
         try:
              res = subprocess.check_output( 
-                 [ "./tar", "-xzf", zipFile, "-C", zipDir ], 
+                 [ "tar", "-xzf", zipFile, "-C", zipDir ], 
                  shell=False )
         except OSError, e:
             myLog( "error", "cannot tar: " + zipFile +  " Error: " + e.strerror )
