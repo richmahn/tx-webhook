@@ -8,6 +8,7 @@ import logging
 import time
 import subprocess
 import boto3
+import pycurl
 
 from boto3.session    import Session
 from os.path          import join, getsize
@@ -90,7 +91,14 @@ myLog( "info", "  workDir: " + zipDir )
 myLog( "info", "  zipFile: " + zipFile )
 orgUmask = os.umask( 0 )
 
-try:
+#try:
+if True:
+    #zip = 
+    #crl = pycurl.Curl()
+    #crl.setopt( crl.URL, url )
+    #crl.setopt( crl.WRITEDATA, zipFile )
+    #crl.perform()
+    #crl.close()
     myLog( "info", "./curl " + url + " -o " + zipFile )
     res = subprocess.check_output( 
         [ "./curl", url, "-o", zipFile ], 
@@ -112,9 +120,9 @@ try:
         myLog( "error", "Cannot make working directory: " + zipDir + " Error: " + e.strerror )
         print "507"
         sys.exit( 7 )
-except OSError, e:
-    myLog( "error", "Cannot: curl " + url + " -o " + zipFile + " Error: " + e.strerror )
-    print "508"
+#except OSError, e:
+#    myLog( "error", "Cannot: curl " + url + " -o " + zipFile + " Error: " + e.strerror )
+#    print "508"
     sys.exit( 8 )
 
 # check for manifest
