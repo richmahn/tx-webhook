@@ -102,9 +102,9 @@ orgUmask = os.umask( 0 )
 
 #try:
 if True:
-    download_file( zipFile, url )
+    myLog( "info",  "src: " + url + " dst: " + zipFile )
+    download_file( url, zipFile )
  
-    #myLog( "info", "curl " + url + " -o " + zipFile )
     #res = subprocess.check_output( 
     #    [ "curl", url, "-o", zipFile ], 
     #    shell=False )
