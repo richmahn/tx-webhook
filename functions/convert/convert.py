@@ -45,8 +45,6 @@ def myLog( level, msg):
         print( ( "  " * l ) + level + " " + msg )
 
 MAXJSON  = 10000
-#AWS_KEY = os.environ( 'AWS_KEY' )
-#AWS_SECRET = os.environ( 'AWS_SECRET' )
 AWS_REGION = "us-east-1"
 
 # define file paths
