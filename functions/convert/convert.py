@@ -18,15 +18,16 @@ import logging
 import time
 import subprocess
 import boto3
-#import pycurl
 
 from boto3.session    import Session
 from os.path          import join, getsize
 from subprocess       import Popen, STDOUT, PIPE
 from datetime         import date
 from logging.handlers import RotatingFileHandler
+from general_tools.file_utils import unzip, load_json_object, make_dir, write_file
+from general_tools.url_utils import join_url_parts, download_file
 
-debugLevel = 3
+debugLevel = 5
 
 def myLog( level, msg):
     # micro debug
@@ -103,12 +104,8 @@ orgUmask = os.umask( 0 )
 
 #try:
 if True:
-    #zip = 
-    #crl = pycurl.Curl()
-    #crl.setopt( crl.URL, url )
-    #crl.setopt( crl.WRITEDATA, zipFile )
-    #crl.perform()
-    #crl.close()
+    #download_file( zipFile, url )
+ 
     myLog( "info", "curl " + url + " -o " + zipFile )
     res = subprocess.check_output( 
         [ "curl", url, "-o", zipFile ], 
