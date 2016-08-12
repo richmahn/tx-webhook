@@ -54,7 +54,7 @@ appDir   = baseDir
 workDir  = appDir 
 outDir   = appDir  + 'output/'
 bucket   = 'test-cdn.door43.org' # pusher repo hash fmt
-config   = './.s3-convert.cfg'
+#config   = './.s3-convert.cfg'
 
 try: # template of things to do based on repo
    tmp = open( "template.json", "r" )
@@ -119,14 +119,15 @@ if True:
         if not os.path.exists( zipDir ):
             os.makedirs( zipDir )
  
-        try:
+        #try:
+        if True:
              res = subprocess.check_output( 
                  [ "tar", "-xzf", zipFile, "-C", zipDir ], 
                  shell=False )
-        except OSError, e:
-            myLog( "error", "cannot tar: " + zipFile +  " Error: " + e.strerror )
-            print( "506" )
-            sys.exit( 6 )
+        #except OSError, e:
+        #    myLog( "error", "cannot tar: " + zipFile +  " Error: " + e.strerror )
+        #    print( "506" )
+        #    sys.exit( 6 )
     #except OSError, e:
     #    myLog( "error", "Cannot make working directory: " + zipDir + " Error: " + e.strerror )
     #    print( "507" )
@@ -134,7 +135,7 @@ if True:
 #except OSError, e:
 #    myLog( "error", "Cannot: curl " + url + " -o " + zipFile + " Error: " + e.strerror )
 #    print( "508" )
-    sys.exit( 8 )
+#    sys.exit( 8 )
 
 # check for manifest
 os.umask( orgUmask )
