@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 #####################################################################
 #
-# extract repo infor from post message
-# curl file to tmp directory
-# unzip file with tar
-# determine operation to perform
-# call correct builder
-# call correct formatter
-# send to s3
+# + extract repo infor from post message
+# x curl file to tmp directory
+# x unzip file with tar
+#  determine operation to perform
+#  call correct builder
+#  call correct formatter
+#  send to s3
 #
 #####################################################################
 # get required code
@@ -27,13 +27,13 @@ from logging.handlers import RotatingFileHandler
 from general_tools.file_utils import unzip, load_json_object, make_dir, write_file
 from general_tools.url_utils import join_url_parts, download_file
 
-debugLevel = 5
+debugLevel = 4
 
 def myLog( level, msg):
     # micro debug
     sw = {
-      "detail"  : 5,
-      "debug"   : 4,
+      "debug"   : 5,
+      "detail"  : 4,
       "info"    : 3,
       "warning" : 2,
       "error"   : 1
@@ -102,12 +102,12 @@ orgUmask = os.umask( 0 )
 
 #try:
 if True:
-    #download_file( zipFile, url )
+    download_file( zipFile, url )
  
-    myLog( "info", "curl " + url + " -o " + zipFile )
-    res = subprocess.check_output( 
-        [ "curl", url, "-o", zipFile ], 
-        shell=False )
+    #myLog( "info", "curl " + url + " -o " + zipFile )
+    #res = subprocess.check_output( 
+    #    [ "curl", url, "-o", zipFile ], 
+    #    shell=False )
 
     #try:
     if True:
@@ -124,11 +124,13 @@ if True:
         #    print( "506" )
         #    sys.exit( 6 )
     #except OSError, e:
-    #    myLog( "error", "Cannot make working directory: " + zipDir + " Error: " + e.strerror )
+    #    myLog( "error", "Cannot make working directory: " + zipDir + \
+    #           " Error: " + e.strerror )
     #    print( "507" )
     #    sys.exit( 7 )
 #except OSError, e:
-#    myLog( "error", "Cannot: curl " + url + " -o " + zipFile + " Error: " + e.strerror )
+#    myLog( "error", "Cannot: curl " + url + " -o " + zipFile + \
+#           " Error: " + e.strerror )
 #    print( "508" )
 #    sys.exit( 8 )
 
@@ -140,12 +142,12 @@ myLog( "info", "pwd: " + os.getcwd() )
 
 if debugLevel > 3:
     for root, dirs, files in os.walk( "." ):
-        myLog( "debug", "root: " + root )
+        myLog( "detail", "root: " + root )
         i = 5
 
         for nme in files:
             srcPath =  join( root, nme )
-            myLog( "detail", srcPath  )
+            myLog( "debug", srcPath  )
             #i -= 1
 
             #if i < 1:
@@ -168,7 +170,7 @@ try: # look at repo manifest could be in subdirectory
     if isMan == "yes":
         raw = mf.read( MAXJSON )
         mf.close()
-        myLog( "debug", "have manifest" + raw )
+        myLog( "detail", "have manifest" + raw )
         manifest = json.loads( raw )
     else:
         myLog( "error", "No manifest for this repo." )
@@ -225,7 +227,8 @@ try: # Find doctype in template then process per template
                             shell=False )
                        myLog( "debug", 'tool result: ' +  res )
                     except OSError, e:
-                        myLog( "warning", "Cannot run tool: " + tool + " " + cmd + ". Error: " + e.strerror )
+                        myLog( "warning", "Cannot run tool: " + tool + " " + \
+                               cmd + ". Error: " + e.strerror )
             except:
                 myLog( "warning", "  Cannot apply transforms" )
 
