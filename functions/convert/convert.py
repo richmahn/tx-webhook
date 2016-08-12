@@ -100,39 +100,32 @@ myLog( "info", "  workDir: " + zipDir )
 myLog( "info", "  zipFile: " + zipFile )
 orgUmask = os.umask( 0 )
 
-#try:
-if True:
+try:
     myLog( "info",  "src: " + url + " dst: " + zipFile )
     download_file( url, zipFile )
  
-    #res = subprocess.check_output( 
-    #    [ "curl", url, "-o", zipFile ], 
-    #    shell=False )
-
-    #try:
-    if True:
+    try:
         if not os.path.exists( zipDir ):
             os.makedirs( zipDir )
  
-        #try:
-        if True:
+        try:
              res = subprocess.check_output( 
                  [ "tar", "-xzf", zipFile, "-C", zipDir ], 
                  shell=False )
-        #except OSError, e:
-        #    myLog( "error", "cannot tar: " + zipFile +  " Error: " + e.strerror )
-        #    print( "506" )
-        #    sys.exit( 6 )
-    #except OSError, e:
-    #    myLog( "error", "Cannot make working directory: " + zipDir + \
-    #           " Error: " + e.strerror )
-    #    print( "507" )
-    #    sys.exit( 7 )
-#except OSError, e:
-#    myLog( "error", "Cannot: curl " + url + " -o " + zipFile + \
-#           " Error: " + e.strerror )
-#    print( "508" )
-#    sys.exit( 8 )
+        except OSError, e:
+            myLog( "error", "cannot tar: " + zipFile +  " Error: " + e.strerror )
+            print( "506" )
+            sys.exit( 6 )
+    except OSError, e:
+        myLog( "error", "Cannot make working directory: " + zipDir + \
+               " Error: " + e.strerror )
+        print( "507" )
+        sys.exit( 7 )
+except OSError, e:
+    myLog( "error", "Cannot: curl " + url + " -o " + zipFile + \
+           " Error: " + e.strerror )
+    print( "508" )
+    sys.exit( 8 )
 
 # check for manifest
 os.umask( orgUmask )
@@ -170,7 +163,7 @@ try: # look at repo manifest could be in subdirectory
     if isMan == "yes":
         raw = mf.read( MAXJSON )
         mf.close()
-        myLog( "detail", "have manifest" + raw )
+        myLog( "debug", "have manifest" + raw )
         manifest = json.loads( raw )
     else:
         myLog( "error", "No manifest for this repo." )
@@ -250,16 +243,11 @@ try: # Upload to s3
     s3 = boto3.client( 's3' )
     #myLog( "debug", session )
     #print( boto3.client.list_roles() )
-
     myLog( "info", "About to ls" )
+#---------------------------------
     os.chdir( outDir )
     src = dest # like "bspidel/gaj-x-ymnk_obs_text_obs/d2bc0dcb/html"
     outPath = bucket + dest
-
-    #session = Session( 
-    #    aws_access_key_id=AWS_KEY, aws_secret_access_key=AWS_SECRET, 
-    #    region_name=AWS_REGION 
-    #)
 
     tpl = 1
 
