@@ -1,37 +1,19 @@
 language: python
 python:
-#  - "2.6"
-  - "2.7"
-#  - "3.2"
-  - "3.3"
-  - "3.4"
-  - "3.5"
-  - "3.5-dev" # 3.5 development branch
-#  - "nightly" # currently points to 3.6-dev
-
-# command to install dependencies
+- '2.7'
+- '3.3'
+- '3.4'
+- '3.5'
+- 3.5-dev
 before_install:
- - sudo apt-get install -y curl tar
-  
-export:
- role='arn:aws:iam::581647696645:role/tx_lambda_function' 
-
-install: 
- - pip install -r requirements.txt
- - pip install coveralls
-#after_install:
-
-# command to run tests
-#before_script:
-script:
-  
-  sh test.sh
-#script: coverage run test-setup.py test
-#after_script:
-
-after_success: 
-  coveralls
-#after_failure:
-
-#nosetests
-
+- sudo apt-get install -y curl tar
+export: role='arn:aws:iam::581647696645:role/tx_lambda_function'
+install:
+- pip install -r requirements.txt
+- pip install coveralls
+script: sh test.sh
+after_success: coveralls
+env:
+  global:
+  - secure: t08K38h6VPYjfB7TnloCfmukZoQgFlTJxq2t5YElXhJAUckZ2KOsgBmOaqngeWImilRKvWi50Zm3ZlgtzoG7PWTN3zvOSzSXsIYcO3samJi05qkRMTDR8CfQpkBY5UZh2Q7EA3ZYp4pk/KQ85wdMzTGcnvRptSBbITObhcJFvMiVrvkYLoV+XeBjmXzvtBVSrLO6YvC8rD2M4q6Z/4FXlwP5Wf2eg0KvWWG7McRA2WKLO9MDk2E2sde/Ecm7Pbejyg6grxUc/P8zHeHGuU8kyfZ44AyZDkMQB6cYTblxvbZqpHKNdPf6kXeTT7UL3DTwz+2aU7nzDEEcJ6C8ynuozSLRBAi5uVKVWF9lsmW3oIunibcoDWLcLGGT84TObv1tXRacLxQ12eFhl4Rjop79Ed/a/PL3inxZcDwjD6VQSWgNs5U56VmZIaRaPJKWHoqLsZO0in6w8J+p34vTNvJUJ0q54+lBfR7ISXj65uWE9ROZh95Ag5BEPPcd5fDBu0ZGrilJEdrvn5pJc+x+P58Tu99SJsN1n3NYcJBuY5wXrMzfhGtp7LNDTMh8Us/z5JtLKmt421rMyVcwuMU1557XjJ0CUImpRYb4TarBqvbjfIG4xP+RL2RfowA4JZopp+Q8RSFlN/k4Qgg0TnfTj7FlNSP185KWKxZqtUx0875zmPA=
+  - secure: d8fHdOZH2eh7Sh3R1nMRW5iqgYRx71cFwMhKGVzh7KP20khnJTHDEYjoJR12U1i9O6gfkFzNBZS2TRNqh+PnKae0hffuhUaXA0b7HRx3/Ib2/NrWXbAkG+JeZNyb/9IqHxINgYLzbgT1GhXHE28pzSk2cJ3grDRNR1yN51Rr0hgHXRqaMicMI+33g5G/xCk3QkDUMKHVkzKvvm6k+9/zo5wexpC2O59MbWB7Y0VWxx4zYCeJbz6D7mITSpuLGpKFKzxuHAzjMv0MBK0Rt2daoB6KTka8h+v/O8GGyk52Yr4htfDPxqljwAuli+jKEa7pPiG2M+Dp96rlEMkqrylw2qx0uvo0bu5Z9bMI8fSjtVn6PRP57WgoemKrNVk35TrRmQ4Ss/0+0UKn1dlXorjDRv1+YZjZFT1YMcwhWI3NVjxahrabLvjYa1aZiQQAlQLtQZz0WCJJhm4wRdzRR26hPM9FYTzgFi2V2+a7w9ZjrVTv/qLXtFRXOcUHeYwG7fILGJfxc3Qi0fy+U3VAyckuk1Ot3269IumhSx+Ke1I9I958CzSFbS/EGfg7Rq844inAcRCx0jXA3Ss9nZKpvRXYlHYet4htLtD0pK0ojl6/8f25JrHYtqxizl6d1krhi0o6yySYQag+WbTLczdlF21oSHIKjTHwf5nuw7xfen3ngkM=
