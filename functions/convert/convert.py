@@ -252,12 +252,12 @@ try: # Upload to s3
     tpl = 1
 
     for root, dirs, files in os.walk( src ):
-        myLog( "debug", "root: " + root )
+        myLog( "detail", "root: " + root )
         c = 1
 
         for nme in files:
             srcPath =  join( root, nme )
-            myLog( "debug", "srcPath: " + srcPath +  "  Bucket: " + bucket )  
+            myLog( "detail", "srcPath: " + srcPath +  "  Bucket: " + bucket )  
             s3.upload_file( srcPath, bucket, "u/" + srcPath )
             myLog( "info", "From: " + srcPath + " to: s3://" + bucket + "/u/"  + srcPath )
             c += 1
