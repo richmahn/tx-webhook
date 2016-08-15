@@ -243,7 +243,7 @@ try: # Upload to s3
     s3 = boto3.client( 's3' )
     #myLog( "debug", session )
     #print( boto3.client.list_roles() )
-    myLog( "info", "About to ls" )
+    myLog( "info", "About to upload to bucket: " + bucket + " from: " + outDir )
 #---------------------------------
     os.chdir( outDir )
     src = dest # like "bspidel/gaj-x-ymnk_obs_text_obs/d2bc0dcb/html"
