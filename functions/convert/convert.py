@@ -112,16 +112,16 @@ try:
              res = subprocess.check_output( 
                  [ "tar", "-xzf", zipFile, "-C", zipDir ], 
                  shell=False )
-        except OSError, e:
+        except( OSError, e ):
             myLog( "error", "cannot tar: " + zipFile +  " Error: " + e.strerror )
             print( "506" )
             sys.exit( 6 )
-    except OSError, e:
+    except( OSError, e ):
         myLog( "error", "Cannot make working directory: " + zipDir + \
                " Error: " + e.strerror )
         print( "507" )
         sys.exit( 7 )
-except OSError, e:
+except( OSError, e ):
     myLog( "error", "Cannot: curl " + url + " -o " + zipFile + \
            " Error: " + e.strerror )
     print( "508" )
@@ -177,7 +177,7 @@ try: # look at repo manifest could be in subdirectory
     docType = manifest[ 'source_translations' ][0][ 'resource_id' ]
     myLog( "info", "docType: " + docType )
 
-except OSError, e:
+except( OSError, e ):
     myLog( "error", "Cannot parse manifest. Error: " + e.strerror )
     print( "503" )
     sys.exit( 3 )
