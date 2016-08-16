@@ -219,7 +219,7 @@ try: # Find doctype in template then process per template
                             stderr=subprocess.STDOUT,
                             shell=False )
                        myLog( "debug", 'tool result: ' +  res )
-                    except OSError, e:
+                    except( OSError, e ):
                         myLog( "warning", "Cannot run tool: " + tool + " " + \
                                cmd + ". Error: " + e.strerror )
             except:
@@ -265,7 +265,7 @@ try: # Upload to s3
         tpl += c
     myLog( "info",  "Files: " + str( tpl ))
 
-except OSError, e:
+except( OSError, e ):
     myLog( "warning", "Cannot upload to s3. Error: " + e.strerror  )
     print( "506" )
 
