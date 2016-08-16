@@ -263,10 +263,12 @@ try: # Upload to s3
             c += 1
         
         tpl += c
+
     myLog( "info",  "Files: " + str( tpl ))
 
-except( OSError, e ):
-    myLog( "warning", "Cannot upload to s3. Error: " + e.strerror  )
+#except( OSError, e ):
+except:
+    myLog( "warning", "Cannot upload to s3. Error: " ) # + e.strerror  )
     print( "506" )
 
 print( '200' )
