@@ -52,7 +52,7 @@ baseDir  = '/tmp/'
 appDir   = baseDir
 workDir  = appDir 
 outDir   = appDir  + 'output/'
-bucket   = 'test-cdn.door43.org' # pusher repo hash fmt
+bucket   = 'api.door43.org' # pusher repo hash fmt
 #config   = './.s3-convert.cfg'
 
 try: # template of things to do based on repo
@@ -238,7 +238,8 @@ except:
     print( "505" )
     sys.exit( 5 )
 
-try: # Upload to s3
+#try: # Upload to s3
+if True:
     #session = boto3.session.Session()
     s3 = boto3.client( 's3' )
     #myLog( "debug", session )
@@ -267,9 +268,9 @@ try: # Upload to s3
     myLog( "info",  "Files: " + str( tpl ))
 
 #except( OSError, e ):
-except:
-    myLog( "warning", "Cannot upload to s3. Error: " ) # + e.strerror  )
-    print( "506" )
+#except:
+#    myLog( "warning", "Cannot upload to s3. Error: " ) # + e.strerror  )
+#    print( "506" )
 
 print( '200' )
 
