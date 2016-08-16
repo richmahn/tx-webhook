@@ -52,7 +52,7 @@ baseDir  = '/tmp/'
 appDir   = baseDir
 workDir  = appDir 
 outDir   = appDir  + 'output/'
-bucket   = 'test-door43.org' # pusher repo hash fmt
+bucket   = 'api.door43.org' # pusher repo hash fmt
 #config   = './.s3-convert.cfg'
 
 try: # template of things to do based on repo
