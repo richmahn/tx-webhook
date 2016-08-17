@@ -45,7 +45,8 @@ def myLog( level, msg):
         print( ( "  " * l ) + level + " " + msg )
 
 MAXJSON  = 10000
-AWS_REGION = "us-east-1"
+#AWS_REGION = "us-east-1"
+AWS_REGION = "Oregon"
 
 # define file paths
 baseDir  = '/tmp/'
