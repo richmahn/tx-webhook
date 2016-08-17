@@ -243,7 +243,7 @@ except:
 #try: # Upload to s3
 if True:
     #session = boto3.session.Session()
-    s3 = boto3.client( 's3' )
+    s3 = boto3.client( 's3', AWS_REGION )
     boto3.set_stream_logger('botocore', level='DEBUG')
     #myLog( "debug", session )
     #print( boto3.client.list_roles() )
