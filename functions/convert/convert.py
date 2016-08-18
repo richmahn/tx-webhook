@@ -17,7 +17,7 @@ import json
 import logging
 import time
 import subprocess
-import boto3
+#import boto3
 
 from boto3.session    import Session
 from os.path          import join, getsize
