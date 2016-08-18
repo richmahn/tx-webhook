@@ -24,10 +24,10 @@ from os.path          import join, getsize
 from subprocess       import Popen, STDOUT, PIPE
 from datetime         import date
 from logging.handlers import RotatingFileHandler
-from general_tools.file_utils import unzip, load_json_object, make_dir, write_file
+#from general_tools.file_utils import unzip, load_json_object, make_dir, write_file
 from general_tools.url_utils import join_url_parts, download_file
 
-debugLevel = 4
+debugLevel = 5
 
 def myLog( level, msg):
     # micro debug
@@ -45,16 +45,16 @@ def myLog( level, msg):
         print( ( "  " * l ) + level + " " + msg )
 
 MAXJSON  = 10000
-#AWS_REGION = "us-east-1"
-AWS_REGION = "Oregon"
+AWS_REGION = "us-east-1"
+#AWS_REGION = "Oregon"
 
 # define file paths
 baseDir  = '/tmp/'
 appDir   = baseDir
 workDir  = appDir 
 outDir   = appDir  + 'output/'
-#bucket   = 'test-cdn.door43.org' # pusher repo hash fmt
-bucket   = 'wa-server-backups' # pusher repo hash fmt
+bucket   = 'test-cdn.door43.org' # pusher repo hash fmt
+#bucket   = 'wa-server-backups' # pusher repo hash fmt
 #config   = './.s3-convert.cfg'
 
 try: # template of things to do based on repo
@@ -102,7 +102,8 @@ myLog( "info", "  workDir: " + zipDir )
 myLog( "info", "  zipFile: " + zipFile )
 orgUmask = os.umask( 0 )
 
-try:
+#try:
+if True:
     myLog( "info",  "src: " + url + " dst: " + zipFile )
     download_file( url, zipFile )
  
@@ -123,11 +124,13 @@ try:
                " Error: " + e.strerror )
         print( "507" )
         sys.exit( 7 )
-except( OSError, e ):
-    myLog( "error", "Cannot: curl " + url + " -o " + zipFile + \
-           " Error: " + e.strerror )
-    print( "508" )
-    sys.exit( 8 )
+#except:
+#except( OSError, e ):
+#    myLog( "error", "Cannot: curl " + url + " -o " + zipFile )
+#    myLog( "error", "Cannot: curl " + url + " -o " + zipFile + \
+#           " Error: " + e.strerror )
+#    print( "508" )
+#    sys.exit( 8 )
 
 # check for manifest
 os.umask( orgUmask )
@@ -244,7 +247,7 @@ except:
 if True:
     #session = boto3.session.Session()
     s3 = boto3.client( 's3', AWS_REGION )
-    boto3.set_stream_logger('botocore', level='DEBUG')
+    #boto3.set_stream_logger('botocore', level='DEBUG')
     #myLog( "debug", session )
     #print( boto3.client.list_roles() )
     myLog( "info", "About to upload to bucket: " + bucket + " from: " + outDir )
