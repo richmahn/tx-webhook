@@ -27,6 +27,9 @@ from logging.handlers import RotatingFileHandler
 #from general_tools.file_utils import unzip, load_json_object, make_dir, write_file
 from general_tools.url_utils import join_url_parts, download_file
 
+ACCESS_KEY = os.environ[ 'AWS_ACCESS_KEY_ID' ]
+SECRET_KEY = os.environ[ 'AWS_SECRET_ACCESS_KEY' ]
+
 debugLevel = 5
 
 def myLog( level, msg):
@@ -246,7 +249,9 @@ except:
 #try: # Upload to s3
 if True:
     #session = boto3.session.Session()
-    s3 = boto3.client( 's3', AWS_REGION )
+    s3 = boto3.client( 's3', AWS_REGION,
+      aws_access_key_id=ACCESS_KEY,
+      aws_secret_access_key=SECRET_KEY )
     #boto3.set_stream_logger('botocore', level='DEBUG')
     #myLog( "debug", session )
     #print( boto3.client.list_roles() )
