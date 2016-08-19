@@ -2,9 +2,9 @@
 #####################################################################
 #
 # + extract repo infor from post message
-# x curl file to tmp directory
-# x unzip file with tar
-#  determine operation to perform
+# + curl file to tmp directory
+# + unzip file with tar
+# + determine operation to perform
 #  call correct builder
 #  call correct formatter
 #  send to s3
