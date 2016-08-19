@@ -33,7 +33,7 @@ SECRET_KEY = os.environ[ 'AWS_SECRET_ACCESS_KEY' ]
 #ACCESS_KEY = os.environ[ 'ACCESS_KEY' ]
 #SECRET_KEY = os.environ[ 'SECRET_KEY' ]
 
-debugLevel = 5
+debugLevel = 4
 
 def myLog( level, msg):
     # micro debug
