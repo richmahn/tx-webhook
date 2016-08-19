@@ -27,7 +27,7 @@ from logging.handlers import RotatingFileHandler
 #from general_tools.file_utils import unzip, load_json_object, make_dir, write_file
 from general_tools.url_utils import join_url_parts, download_file
 
-print os.environ
+print( os.environ )
 ACCESS_KEY = os.environ[ 'AWS_ACCESS_KEY_ID' ]
 SECRET_KEY = os.environ[ 'AWS_SECRET_ACCESS_KEY' ]
 #ACCESS_KEY = os.environ[ 'ACCESS_KEY' ]
