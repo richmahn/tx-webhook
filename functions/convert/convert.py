@@ -17,7 +17,7 @@ import json
 import logging
 import time
 import subprocess
-#import boto3
+import boto3
 
 from boto3.session    import Session
 from os.path          import join, getsize
@@ -30,8 +30,6 @@ from general_tools.url_utils import join_url_parts, download_file
 print( os.environ )
 ACCESS_KEY = os.environ[ 'AWS_ACCESS_KEY_ID' ]
 SECRET_KEY = os.environ[ 'AWS_SECRET_ACCESS_KEY' ]
-#ACCESS_KEY = os.environ[ 'ACCESS_KEY' ]
-#SECRET_KEY = os.environ[ 'SECRET_KEY' ]
 
 debugLevel = 4
 
