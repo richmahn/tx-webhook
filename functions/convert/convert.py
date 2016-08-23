@@ -190,7 +190,8 @@ except( OSError, e ):
     print( "503" )
     sys.exit( 3 )
 
-try: # Find doctype in template then process per template
+#try: # Find doctype in template then process per template
+if True:
     isFound = False
     myLog( "info", "looking for docType: " + docType )
 
@@ -243,10 +244,10 @@ try: # Find doctype in template then process per template
         print( "504" )
         sys.exit( 4 )
 
-except:
-    myLog( "error", "No support for docType: " + docType )
-    print( "505" )
-    sys.exit( 5 )
+#except:
+#    myLog( "error", "No support for docType: " + docType )
+#    print( "505" )
+#    sys.exit( 5 )
 
 try: # Upload to s3
     s3 = boto3.client( 's3', AWS_REGION,
