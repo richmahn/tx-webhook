@@ -129,11 +129,11 @@ try:
         sys.exit( 7 )
 except:
 #except( OSError, e ):
-#    myLog( "error", "Cannot: curl " + url + " -o " + zipFile )
+    myLog( "error", "Cannot: curl " + url + " -o " + zipFile )
 #    myLog( "error", "Cannot: curl " + url + " -o " + zipFile + \
 #           " Error: " + e.strerror )
-#    print( "508" )
-#    sys.exit( 8 )
+    print( "508" )
+    sys.exit( 8 )
 
 # check for manifest
 os.umask( orgUmask )
