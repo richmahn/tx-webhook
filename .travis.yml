@@ -3,9 +3,12 @@ python:
 - '2.7'
 install:
 - pip install -r requirements.txt
-- pip install coveralls
-script: sh test.sh
-after_success: coveralls
+- pip install python-coveralls
+script: 
+- sh test.sh
+after_success: 
+- coveralls
 env:
+  repo_token: Erh1QyRTdfG7wP6WkcLNp5y3u5yTZRYjeyDyc 
   global:
     secure: PPqC18eD7pWRdn6zFNmqqYci2rO1jkS7+P54ei215zdGUatm/Uj81YiFPtzp2mY6M2tluLTK3I1i+esqyQhY14uWrRffVegTZDXX94mKyuOVPDX+nC2tIAv7uM5dQNNk8xDLkB0cvrV5YTvstoFjTrD94e2tp+sqWNc/uqtLTjRIDVNv0eHh4+0PGDRRWQXP/kctD27HpgChPnw1LzqQk4j6gKwFR+uprbbj8VW6y6TRKlplIq9c2La8zLTlmXFw1+yDpaZDlMUkH0hYkzMcPqe6llbkD/gFeNY7Mfw8jjZXadL/uW3ky4ym2WhpEFSC8+NH5paE/PBE+eAdEN2gl5ZV6UkduQpL2k/qUeH3iW5vV8PZL3Bsd5BnMNs8drYKnu+OoQqtsjzVFeyyQrX6130UJgMudIftP9q3FiHY6z7UVUAY1aYVeun4oR1Q+mBh6DXgU4ovOI2wVVWD4MTa0cjvR2wegm5TXfk8XLbWiPAZvX608USNtHZCE4ZJZkkfFfPTlvSuN01otcUjQ1FRffWzuUdbHFacGmndRbQAUntutTWsbRugb8ZxUmw+jO99+kV6/oNfdYZwQFjR7aUMB2Y0lY+44St/owt8pPC3P2d0HohPNoPVnFW01ljQ88tdRy9lRqL2go4H92qtg+KDsylBHQK+9hrMg7D96bFqKfE=
