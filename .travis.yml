@@ -1,17 +1,11 @@
 language: python
 python:
 - '2.7'
-- '3.3'
-- '3.4'
-- '3.5'
-- 3.5-dev
-before_install:
-- sudo apt-get install -y curl tar
 install:
 - pip install -r requirements.txt
 - pip install coveralls
 script: sh test.sh
 after_success: coveralls
 env:
-  global: 
-    - secure: "NpRLqoT/rrvTwc7fHoZTsOQ0A0mv6KmAfgXdHtXwr5TFSvdl00fjjkyeva4Gz9fIYCeSdZ5jqMFRGDexgYJsF+0/CONS7onPe0ZhHs7WV7IAdlmsD7eOOA+GfuUaPZoh6AnPdC4162+iJRTAHctVjRZ48mU1bKBBerDwHNL8kxMctSPi4lPOn+vckKdRnjuok+KGthkQiatsUA6rWg+BCs+MF1BCjG26Fre5sF5XwnkKm6DJHb9GK2+kl79mvKpYhpXfmRh5p5/9xlu6i9qUS1S+dX3eQGaxkFP/iiMhkT2rU/efQpXSuTp3E3I8/2AuR6gs0nQ3z1I7LvMMU+PCfWH9uFKhOrFc5/DnWdUF0xys2qzlspwr171AzjuG1SIlw3ujMz6aAdRC/WRvfYV5yI+aMxwwDp6ZXotKV/dU5eDxXdREkyKFwyIePOYZiQLnNwm0rc+f737p+z7dcRwKaGmiJsxcmNzJUUEduucC91CxMg1Cj8e5R7DnrYp7/vFA3fVTFJmf3tktC7WnC5vh5DpnUbiwxIaQw4LkDIllssTQydXycJtBJAXHDOafWm5+zja5viByjFAHjQZnyictMZ2Nwz0t0u42fL1YIVTOGWaJmYxGzFkwHNmD5VCSmncKFLicfCXVS8PATVTg7dBPoy15ggVN5MywBAaFHKMRN40="
+  global:
+    secure: PPqC18eD7pWRdn6zFNmqqYci2rO1jkS7+P54ei215zdGUatm/Uj81YiFPtzp2mY6M2tluLTK3I1i+esqyQhY14uWrRffVegTZDXX94mKyuOVPDX+nC2tIAv7uM5dQNNk8xDLkB0cvrV5YTvstoFjTrD94e2tp+sqWNc/uqtLTjRIDVNv0eHh4+0PGDRRWQXP/kctD27HpgChPnw1LzqQk4j6gKwFR+uprbbj8VW6y6TRKlplIq9c2La8zLTlmXFw1+yDpaZDlMUkH0hYkzMcPqe6llbkD/gFeNY7Mfw8jjZXadL/uW3ky4ym2WhpEFSC8+NH5paE/PBE+eAdEN2gl5ZV6UkduQpL2k/qUeH3iW5vV8PZL3Bsd5BnMNs8drYKnu+OoQqtsjzVFeyyQrX6130UJgMudIftP9q3FiHY6z7UVUAY1aYVeun4oR1Q+mBh6DXgU4ovOI2wVVWD4MTa0cjvR2wegm5TXfk8XLbWiPAZvX608USNtHZCE4ZJZkkfFfPTlvSuN01otcUjQ1FRffWzuUdbHFacGmndRbQAUntutTWsbRugb8ZxUmw+jO99+kV6/oNfdYZwQFjR7aUMB2Y0lY+44St/owt8pPC3P2d0HohPNoPVnFW01ljQ88tdRy9lRqL2go4H92qtg+KDsylBHQK+9hrMg7D96bFqKfE=

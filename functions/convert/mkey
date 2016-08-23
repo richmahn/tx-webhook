@@ -1,0 +1,30 @@
+#!/bin/sh
+########################################################################
+# 
+# NAME mkey  -  make travis keys from aws credentials
+#
+yaml=".travis.yml"
+# expected to be in: 
+cred=~/.aws/credentials
+#
+########################################################################
+cd ../..
+echo ~
+cp $yaml $yaml.bak
+grep -v 'secure:' $yaml > $yaml.tmp
+mv $yaml.tmp $yaml
+
+while read k e v ; do
+  uk=${k^^} # uppercase credential names
+
+  case $k in
+    '['*|'#'*) ;; # ignore commented out credentials
+    *)
+      echo $uk
+      res="$res $uk=$v "  # add a variable to the list
+      ;;
+  esac
+done < $cred
+
+travis encrypt $res --add
+
