@@ -1,13 +1,20 @@
 language: python
 python:
 - '2.7'
+
 install:
 - pip install -r requirements.txt
 - pip install python-coveralls
+- pip install coverage
+- pop install nose
+
 script: 
 - sh test.sh
+- nosetests --with-coverage
+
 after_success: 
 - coveralls
+
 env:
   repo_token: Erh1QyRTdfG7wP6WkcLNp5y3u5yTZRYjeyDyc 
   global:
