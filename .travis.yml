@@ -9,8 +9,8 @@ install:
 - pip install nose
 
 script: 
-- sh test.sh
-- nosetests --with-coverage
+- coverage run test.sh
+#- nosetests --with-coverage
 
 after_success: 
 - coveralls
