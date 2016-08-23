@@ -69,7 +69,7 @@ try: # template of things to do based on repo
    myLog( "debug", "templates: " + tmpRaw )
 except:
    myLog( "error", "Cannot read transform template" )
-   sys.tsessionttt( 2 )
+   sys.exit( 2 )
 
 # decode received message
 sp = " "
