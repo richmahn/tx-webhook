@@ -7,7 +7,7 @@
 # + determine operation to perform
 #  call correct builder
 #  call correct formatter
-#  send to s3
+# + send to s3
 #
 #####################################################################
 # get required code
@@ -31,7 +31,7 @@ print( os.environ )
 ACCESS_KEY = os.environ[ 'AWS_ACCESS_KEY_ID' ]
 SECRET_KEY = os.environ[ 'AWS_SECRET_ACCESS_KEY' ]
 
-debugLevel = 4
+debugLevel = 5
 
 def myLog( level, msg):
     # micro debug
@@ -106,8 +106,7 @@ myLog( "info", "  workDir: " + zipDir )
 myLog( "info", "  zipFile: " + zipFile )
 orgUmask = os.umask( 0 )
 
-#try:
-if True:
+try:
     myLog( "info",  "src: " + url + " dst: " + zipFile )
     download_file( url, zipFile )
  
@@ -128,7 +127,7 @@ if True:
                " Error: " + e.strerror )
         print( "507" )
         sys.exit( 7 )
-#except:
+except:
 #except( OSError, e ):
 #    myLog( "error", "Cannot: curl " + url + " -o " + zipFile )
 #    myLog( "error", "Cannot: curl " + url + " -o " + zipFile + \
@@ -223,14 +222,14 @@ try: # Find doctype in template then process per template
                     myLog( "info", "cmd: " + tool + " " + cmd )
 
                     try:
-                       res = subprocess.check_output( 
+                        res = subprocess.check_output( 
                             [ "python", tool, "-s", src, "-d", tgt ],
                             stderr=subprocess.STDOUT,
                             shell=False )
-                       myLog( "debug", 'tool result: ' +  res )
+                        myLog( "debug", 'tool result: ' +  res )
                     except( OSError, e ):
                         myLog( "warning", "Cannot run tool: " + tool + " " + \
-                               cmd + ". Error: " + e.strerror )
+                            cmd + ". Error: " + e.strerror )
             except:
                 myLog( "warning", "  Cannot apply transforms" )
 
@@ -247,21 +246,16 @@ except:
     print( "505" )
     sys.exit( 5 )
 
-#try: # Upload to s3
-if True:
-    #session = boto3.session.Session()
+try: # Upload to s3
     s3 = boto3.client( 's3', AWS_REGION,
-      aws_access_key_id=ACCESS_KEY,
-      aws_secret_access_key=SECRET_KEY )
+        aws_access_key_id=ACCESS_KEY,
+        aws_secret_access_key=SECRET_KEY )
     #boto3.set_stream_logger('botocore', level='DEBUG')
     #myLog( "debug", session )
-    #print( boto3.client.list_roles() )
     myLog( "info", "About to upload to bucket: " + bucket + " from: " + outDir )
-#---------------------------------
     os.chdir( outDir )
     src = dest # like "bspidel/gaj-x-ymnk_obs_text_obs/d2bc0dcb/html"
     outPath = bucket + dest
-
     tpl = 1
 
     for root, dirs, files in os.walk( src ):
@@ -279,10 +273,10 @@ if True:
 
     myLog( "info",  "Files: " + str( tpl ))
 
-#except( OSError, e ):
+except( OSError, e ):
 #except:
-#    myLog( "warning", "Cannot upload to s3. Error: " ) # + e.strerror  )
-#    print( "506" )
+    myLog( "warning", "Cannot upload to s3. Error: " ) # + e.strerror  )
+    print( "506" )
 
 print( '200' )
 
