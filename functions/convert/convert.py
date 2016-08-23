@@ -195,7 +195,7 @@ try: # Find doctype in template then process per template
     myLog( "info", "looking for docType: " + docType )
 
     for item in templates[ 'templates']:
-        myLog( "debug", "trying: " + item['doctype'] )
+        myLog( "detail", "trying: " + item['doctype'] )
 
         if item['doctype'] == docType:
             myLog( "detail", "found: " + item['doctype'] )
@@ -207,10 +207,11 @@ try: # Find doctype in template then process per template
             except:
                 myLog( "warning", "  Cannot apply tests." )
 
-            try: # apply transforms from template
+            #try: # apply transforms from template
+            if True:
                 for trans in item[ 'transforms' ]:
-                    myLog( "debug", "  tool: " + trans[ 'tool' ] )
-                    myLog( "debug", "  orgDir: " + orgDir + " current: " + os.getcwd() )
+                    myLog( "detail", "  tool: " + trans[ 'tool' ] )
+                    myLog( "detail", "  orgDir: " + orgDir + " current: " + os.getcwd() )
                     os.chdir( orgDir )
                     myLog( "info", "pwd: " + os.getcwd() )
                     tool =  "converters/" + trans[ 'tool' ]
@@ -221,17 +222,18 @@ try: # Find doctype in template then process per template
                     cmd =  " -s " + src + " -d " + tgt
                     myLog( "info", "cmd: " + tool + " " + cmd )
 
-                    try:
+                    #try:
+                    if True: 
                         res = subprocess.check_output( 
                             [ "python", tool, "-s", src, "-d", tgt ],
                             stderr=subprocess.STDOUT,
                             shell=False )
                         myLog( "debug", 'tool result: ' +  res )
-                    except( OSError, e ):
-                        myLog( "warning", "Cannot run tool: " + tool + " " + \
-                            cmd + ". Error: " + e.strerror )
-            except:
-                myLog( "warning", "  Cannot apply transforms" )
+                    #except( OSError, e ):
+                    #    myLog( "warning", "Cannot run tool: " + tool + " " + \
+                    #        cmd + ". Error: " + e.strerror )
+            #except:
+            #    myLog( "warning", "  Cannot apply transforms" )
 
             isFound = True
             break
@@ -264,7 +266,7 @@ try: # Upload to s3
 
         for nme in files:
             srcPath =  join( root, nme )
-            myLog( "detail", "srcPath: " + srcPath +  "  Bucket: " + bucket )  
+            myLog( "debug", "srcPath: " + srcPath +  "  Bucket: " + bucket )  
             s3.upload_file( srcPath, bucket, "u/" + srcPath )
             myLog( "info", "From: " + srcPath + " to: s3://" + bucket + "/u/"  + srcPath )
             c += 1
