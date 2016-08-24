@@ -77,7 +77,7 @@ sp = " "
 myLog( "info", "argc: " + len( sys.argv ) )
 
 if len( sys.argv ) > 0:
-  ifle = open( argv[1] )
+  ifle = open( argv[1], "r" )
 else:
   ifle = sys.stdin
 
