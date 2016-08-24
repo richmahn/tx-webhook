@@ -11,7 +11,7 @@ install:
 
 script: 
 - cd functions/convert ;
-  coverage run (convert.py < test/obs.json)
+  coverage run convert.py  test/obs.json
 #- nosetests --with-coverage
 
 after_success: 

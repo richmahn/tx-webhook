@@ -73,7 +73,13 @@ except:
 
 # decode received message
 sp = " "
-lines = sys.stdin.readlines()
+
+if len(sys.argv) == 1:
+  ifle = argv[1]
+else:
+  ifle = sys.stdin
+
+lines = ifle.readlines()
 payload = json.loads( sp.join( lines ) )
 repoName = payload['repository']['name']
 myLog( "info", "name: " + repoName )
