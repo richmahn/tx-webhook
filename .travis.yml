@@ -9,7 +9,8 @@ install:
 - pip install nose
 
 script: 
-- coverage run functions/convert/convert.py < functions/convert/test/obs.json
+- cd functions/convert
+  coverage run convert.py < /test/obs.json
 #- nosetests --with-coverage
 
 after_success: 
