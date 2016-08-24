@@ -74,8 +74,10 @@ except:
 # decode received message
 sp = " "
 
-if len(sys.argv) == 1:
-  ifle = argv[1]
+myLog( "info", "argc: " + len( sys.argv ) )
+
+if len( sys.argv ) > 0:
+  ifle = open( argv[1] )
 else:
   ifle = sys.stdin
 
