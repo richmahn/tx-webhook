@@ -1,5 +1,5 @@
 [run]
 include = 
-convert.py
-converters/*/*
+  convert.py
+  converters/*/*
 
