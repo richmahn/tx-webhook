@@ -7,14 +7,16 @@ install:
 - pip install python-coveralls
 - pip install coverage
 - pip install nose
+- python setup.py install
 
 script: 
 - cd functions/convert ;
-  coverage run convert.py < test/obs.json
+  coverage run (convert.py < test/obs.json)
 #- nosetests --with-coverage
 
 after_success: 
 - coveralls
+- coverage report -m
 
 env:
   repo_token: Erh1QyRTdfG7wP6WkcLNp5y3u5yTZRYjeyDyc 
