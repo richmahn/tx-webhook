@@ -74,7 +74,7 @@ except:
 # decode received message
 sp = " "
 
-myLog( "info", "argc: " + len( sys.argv ) )
+myLog( "info", "argc: " + str( len( sys.argv )) )
 
 if len( sys.argv ) > 0:
   ifle = open( argv[1], "r" )
