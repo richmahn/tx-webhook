@@ -57,7 +57,8 @@ baseDir  = '/tmp/'
 appDir   = baseDir
 workDir  = appDir 
 outDir   = appDir  + 'output/'
-bucket   = 'test-cdn.door43.org' # pusher repo hash fmt
+bucket   = 'test-door43.org' # pusher repo hash fmt
+#bucket   = 'test-cdn.door43.org' # pusher repo hash fmt
 #bucket   = 'wa-server-backups' # pusher repo hash fmt
 #config   = './.s3-convert.cfg'
 
