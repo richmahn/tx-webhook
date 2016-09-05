@@ -10,4 +10,4 @@ develop:
 
 Project description at https://github.com/unfoldingWord-dev/door43.org/wiki/tX-Development-Architecture#tx-webhook-client
 
-Issue for its creation at https://github.com/unfoldingWord-dev/door43.org/issues
+Issue for its creation at https://github.com/unfoldingWord-dev/door43.org/issues/54
