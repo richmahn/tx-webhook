@@ -1,9 +1,15 @@
 language: python
 python:
 - '2.7'
+before_install:
+- sudo apt-get install -y curl tar
+- bash install-apex.sh
+- eval export AWS_ACCESS_KEY_ID=\$${TRAVIS_BRANCH}_aws_access_key
+- eval export AWS_SECRET_ACCESS_KEY=\$${TRAVIS_BRANCH}_aws_secret_access_key
+- eval export AWS_REGION=\$${TRAVIS_BRANCH}_aws_region
 install:
-- pip install -r requirements.txt
-- pip install python-coveralls
+- bash install-requirements.sh
+- pip install coveralls
 - pip install coverage
 #- pip install nose
 #- python setup.py install
