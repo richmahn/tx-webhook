@@ -8,6 +8,6 @@ develop:
 
 # tx-webhook
 
-Project description at https://github.com/unfoldingWord-dev/door43.org/wiki/tX-Development-Architecture#tx-webhook-client.
+Project description at https://github.com/unfoldingWord-dev/door43.org/wiki/tX-Development-Architecture#tx-webhook-client
 
 Issue for its creation at https://github.com/unfoldingWord-dev/door43.org/issues
