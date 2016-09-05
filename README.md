@@ -1,8 +1,8 @@
-Master:
+master:
 [![Build Status](https://travis-ci.org/unfoldingWord-dev/tx-webhook.svg?branch=master)](https://travis-ci.org/unfoldingWord-dev/tx-webhook) 
 [![Coverage Status](https://coveralls.io/repos/github/unfoldingWord-dev/tx-webhook/badge.svg?branch=master)](https://coveralls.io/github/unfoldingWord-dev/tx-webhook?branch=master)
 
-Develop:
+develop:
 [![Build Status](https://travis-ci.org/unfoldingWord-dev/tx-webhook.svg?branch=develop)](https://travis-ci.org/unfoldingWord-dev/tx-webhook) 
 [![Coverage Status](https://coveralls.io/repos/github/unfoldingWord-dev/tx-webhook/badge.svg?branch=develop)](https://coveralls.io/github/unfoldingWord-dev/tx-webhook?branch=develop)
 
