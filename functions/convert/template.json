@@ -1,31 +1,57 @@
 {
-	"templates": [{
-		"doctype": "usfm",
-		"transforms": [{
-			"to": "html",
-			"tool": "usfm/convert_to_html.py"
-		}]
-	}, {
-		"doctype": "obs",
-		"transforms": [{
-			"to": "html",
-			"tool": "obs/convert_to_html.py"
-		}]
-	}, {
-		"doctype": "tA",
-		"transforms": [{
-			"to": "html",
-			"tool": "ta/convert_to_html.py"
-		}]
-	}, {
-		"doctype": "ulb",
-		"tests": [{
-			"tool": "extensionCheck('.ulb')",
-			"tool": "verses()"
-		}],
-		"transforms": [{
-			"to": "html",
-			"tool": "obs/convert_to_html.py"
-		}]
-	}]
+  "templates": [
+    {
+      "doctype": "usfm",
+      "agent": "local",
+      "transforms": [
+        {
+          "from": "md",
+          "to": "html",
+          "tool": "usfm/convert_to_html.py"
+		}
+      ]
+    }, {
+      "doctype": "obs",
+      "agent": "tx",
+      "transforms": [
+        {
+          "from": "text",
+          "function": "mv_md"
+        }, {
+          "from": "md",
+          "function": "flatten",
+          "to": "html",
+          "tool": "tx"
+        }, {
+          "from": "deprecated",
+          "to": "html",
+          "tool": "obs/convert_to_html.py"
+        }
+      ]
+    }, {
+      "doctype": "tA",
+      "agent": "local",
+      "transforms": [
+        {
+          "from": "md",
+          "to": "html",
+          "tool": "ta/convert_to_html.py"
+        }
+      ]
+    }, {
+      "doctype": "ulb",
+      "agent": "local",
+      "tests": [       
+        "extensionCheck('.ulb')",
+        "verses()"
+      ],
+      "transforms": [
+        {
+          "from": "text",
+          "to": "html",
+          "tool": "usfm/convert_to_html.py"
+        }
+      ]
+    }
+  ]
 }
